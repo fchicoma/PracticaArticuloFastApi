@@ -20,14 +20,14 @@ articulos = []
 @app.post("/articulo/")
 async def crear_articulo(articulo: Articulo):
     articulos.append(articulo)
-    return {"mensaje": "Artículo creado exitosamente"}
+    return {"mensaje": "Artículo cambiado creado exitosamente"}
 
 @app.delete("/articulo/{id}")
 async def borrar_articulo(id: int):
     for articulo in articulos:
         if articulo.id == id:
             articulos.remove(articulo)
-            return {"mensaje": "Artículo borrado exitosamente"}
+            return {"mensaje": "Artículo cambiado borrado exitosamente"}
     return {"mensaje": "Artículo no encontrado"}
 
 @app.put("/articulo/{id}")
@@ -35,7 +35,7 @@ async def modificar_articulo(id: int, articulo: Articulo):
     for index, articulo_existente in enumerate(articulos):
         if articulo_existente.id == id:
             articulos[index] = articulo
-            return {"mensaje": "Artículo modificado exitosamente"}
+            return {"mensaje": "Artículo  cambiado modificado exitosamente"}
     return {"mensaje": "Artículo no encontrado"}
 
 @app.get("/articulo/{id}", response_model=Articulo)
